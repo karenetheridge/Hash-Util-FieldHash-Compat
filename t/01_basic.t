@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More 'no_plan';
+use Test::More;
 
 use ok 'Hash::Util::FieldHash::Compat' => qw(fieldhash idhash register id id_2obj idhashes fieldhashes);
 
@@ -96,3 +96,5 @@ use ok 'Hash::Util::FieldHash::Compat' => qw(fieldhash idhash register id id_2ob
 
 	is_deeply($_, [{ foo => "bar" }, { gorch => "baz" }], "plural form") for \@id_hashes, \@field_hashes;
 }
+
+done_testing;
