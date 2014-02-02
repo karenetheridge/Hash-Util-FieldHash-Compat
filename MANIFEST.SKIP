@@ -1,5 +1,0 @@
-#!include_default
-### DEFAULT MANIFEST.SKIP ENDS HERE ####
-\.sw.$
-\.tar\.gz$
-^(\w+-)*(\w+)-\d\.\d+$

@@ -16,8 +16,6 @@ BEGIN {
 	}
 }
 
-our $VERSION = "0.04";
-
 sub import {
 	if ( REAL_FIELDHASH ) {
 		my $class = "Hash::Util::FieldHash";
