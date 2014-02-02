@@ -24,168 +24,168 @@ use vars qw(@ISA %EXPORT_TAGS @EXPORT_OK);
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 sub fieldhash (\%) {
-	my $hash = shift;
+    my $hash = shift;
 
-	tie %$hash, 'Hash::Util::FieldHash::Compat::Tie::FieldHash', %$hash;
+    tie %$hash, 'Hash::Util::FieldHash::Compat::Tie::FieldHash', %$hash;
 
-	return $hash;
+    return $hash;
 }
 
 sub fieldhashes { map { &fieldhash($_) } @_ }
 
 sub idhash (\%) {
-	tie %{$_[0]}, 'Hash::Util::FieldHash::Compat::Tie::IdHash', %{$_[0]};
-	$_[0];
+    tie %{$_[0]}, 'Hash::Util::FieldHash::Compat::Tie::IdHash', %{$_[0]};
+    $_[0];
 }
 
 sub idhashes { map { &idhash($_) } @_ }
 
 sub id ($) {
-	my $obj = shift;
+    my $obj = shift;
 
-	if ( defined ( my $refaddr = Tie::RefHash::refaddr($obj) ) ) {
-		return $refaddr;
-	} else {
-		return $obj;
-	}
+    if ( defined ( my $refaddr = Tie::RefHash::refaddr($obj) ) ) {
+        return $refaddr;
+    } else {
+        return $obj;
+    }
 }
 
 tie my %registry, 'Tie::RefHash::Weak';
 
 sub id_2obj {
-	my $id = shift;
+    my $id = shift;
 
-	my $registry_by_id = tied(%registry)->[0];
+    my $registry_by_id = tied(%registry)->[0];
 
-	if ( my $record = $registry_by_id->{$id} ) {
-		return $record->[0]; # first slot is the key
-	}
+    if ( my $record = $registry_by_id->{$id} ) {
+        return $record->[0]; # first slot is the key
+    }
 
-	return;
+    return;
 }
 
 sub register {
-	my ( $obj, @args ) = @_;
-	( $registry{$obj} ||= Hash::Util::FieldHash::Compat::Destroyer->new($obj) )->register(@args);
+    my ( $obj, @args ) = @_;
+    ( $registry{$obj} ||= Hash::Util::FieldHash::Compat::Destroyer->new($obj) )->register(@args);
 }
 
 {
-	package Hash::Util::FieldHash::Compat::Tie::IdHash;
+    package Hash::Util::FieldHash::Compat::Tie::IdHash;
 
-	use Tie::Hash ();
-	use vars qw(@ISA);
-	@ISA = qw(Tie::StdHash);
+    use Tie::Hash ();
+    use vars qw(@ISA);
+    @ISA = qw(Tie::StdHash);
 
-	# this class always stringifies using id().
-	
-	sub TIEHASH {
-		my ( $class, @args ) = @_;
-		my $self = bless {}, $class;
+    # this class always stringifies using id().
 
-		while ( @args ) {
-			my ( $key, $value ) = splice @args, 0, 2;
-			$self->STORE($key, $value);
-		}
+    sub TIEHASH {
+        my ( $class, @args ) = @_;
+        my $self = bless {}, $class;
 
-		$self;
-	}
+        while ( @args ) {
+            my ( $key, $value ) = splice @args, 0, 2;
+            $self->STORE($key, $value);
+        }
 
-	BEGIN {
-		foreach my $method ( qw(STORE FETCH DELETE EXISTS) ) {
-			eval 'sub '.$method.' {
-				my ( $self, $key, @args ) = @_;
-				$self->SUPER::'.$method.'( Hash::Util::FieldHash::Compat::id($key), @args );
-			}';
-		}
-	}
+        $self;
+    }
 
-	package Hash::Util::FieldHash::Compat::Tie::FieldHash;
+    BEGIN {
+        foreach my $method ( qw(STORE FETCH DELETE EXISTS) ) {
+            eval 'sub '.$method.' {
+                my ( $self, $key, @args ) = @_;
+                $self->SUPER::'.$method.'( Hash::Util::FieldHash::Compat::id($key), @args );
+            }';
+        }
+    }
 
-	use vars qw(@ISA);
-	@ISA = qw(Tie::RefHash::Weak);
+    package Hash::Util::FieldHash::Compat::Tie::FieldHash;
 
-	# this subclass retains weakrefs to the objects in the keys, but pretends
-	# the keys are actually strings
+    use vars qw(@ISA);
+    @ISA = qw(Tie::RefHash::Weak);
 
-	BEGIN {
-		# always return strings from keys
+    # this subclass retains weakrefs to the objects in the keys, but pretends
+    # the keys are actually strings
 
-		foreach my $method ( qw(FIRSTKEY NEXTKEY) ) {
-			eval 'sub '.$method.' {
-				my ( $self, @args ) = @_;
-				Hash::Util::FieldHash::Compat::id($self->SUPER::'.$method.'(@args));
-			}';
-		}
+    BEGIN {
+        # always return strings from keys
 
-		sub EXISTS {
-			my ( $self, $key ) = @_;
-			my $str_key = Hash::Util::FieldHash::Compat::id($key);
-			exists $_->{$str_key} and return 1 for @{ $self }[0, 1];
-			return;
-		}
+        foreach my $method ( qw(FIRSTKEY NEXTKEY) ) {
+            eval 'sub '.$method.' {
+                my ( $self, @args ) = @_;
+                Hash::Util::FieldHash::Compat::id($self->SUPER::'.$method.'(@args));
+            }';
+        }
 
-		sub FETCH {
-			my($self, $key) = @_;
+        sub EXISTS {
+            my ( $self, $key ) = @_;
+            my $str_key = Hash::Util::FieldHash::Compat::id($key);
+            exists $_->{$str_key} and return 1 for @{ $self }[0, 1];
+            return;
+        }
 
-			my $str_key = Hash::Util::FieldHash::Compat::id($key);
+        sub FETCH {
+            my($self, $key) = @_;
 
-			if ( exists $self->[0]{$str_key} ) {
-				return $self->[0]{$str_key}[1];
-			} else {
-				$self->[1]{$str_key};
-			}
-		}
+            my $str_key = Hash::Util::FieldHash::Compat::id($key);
 
-		sub STORE {
-			my ( $self, $key, $value ) = @_;
+            if ( exists $self->[0]{$str_key} ) {
+                return $self->[0]{$str_key}[1];
+            } else {
+                $self->[1]{$str_key};
+            }
+        }
 
-			my $str_key = Hash::Util::FieldHash::Compat::id($key);
+        sub STORE {
+            my ( $self, $key, $value ) = @_;
 
-			delete $self->[1]{$str_key};
+            my $str_key = Hash::Util::FieldHash::Compat::id($key);
 
-			$self->SUPER::STORE( $key, $value );
-		}
+            delete $self->[1]{$str_key};
 
-		sub DELETE {
-			my ( $self, $key ) = @_;
+            $self->SUPER::STORE( $key, $value );
+        }
 
-			foreach my $key ( $key, Hash::Util::FieldHash::Compat::id($key) ) {
-				if ( defined ( my $ret = $self->SUPER::DELETE($key) ) ) {
-					return $ret;
-				}
-			}
-		}
-	}
+        sub DELETE {
+            my ( $self, $key ) = @_;
 
-	package Hash::Util::FieldHash::Compat::Destroyer;
+            foreach my $key ( $key, Hash::Util::FieldHash::Compat::id($key) ) {
+                if ( defined ( my $ret = $self->SUPER::DELETE($key) ) ) {
+                    return $ret;
+                }
+            }
+        }
+    }
 
-	use Scalar::Util qw(weaken);
+    package Hash::Util::FieldHash::Compat::Destroyer;
 
-	sub new {
-		my ( $class, $obj ) = @_;
+    use Scalar::Util qw(weaken);
 
-		tie my %hashes, 'Tie::RefHash::Weak';
+    sub new {
+        my ( $class, $obj ) = @_;
 
-		my $self = bless {
-			object => $obj,
-			hashes => \%hashes,
-		}, $class;
+        tie my %hashes, 'Tie::RefHash::Weak';
 
-		weaken($self->{object});
+        my $self = bless {
+            object => $obj,
+            hashes => \%hashes,
+        }, $class;
 
-		$self;
-	}
+        weaken($self->{object});
 
-	sub register {
-		my ( $self, @hashes ) = @_;
-		$self->{hashes}{$_}++ for @hashes;
-	}
+        $self;
+    }
 
-	sub DESTROY {
-		my $self = shift;
-		my $object = $self->{object};
-		delete $_->{Hash::Util::FieldHash::Compat::id($object)} for keys %{ $self->{hashes} };
-	}
+    sub register {
+        my ( $self, @hashes ) = @_;
+        $self->{hashes}{$_}++ for @hashes;
+    }
+
+    sub DESTROY {
+        my $self = shift;
+        my $object = $self->{object};
+        delete $_->{Hash::Util::FieldHash::Compat::id($object)} for keys %{ $self->{hashes} };
+    }
 }
 
 __PACKAGE__
@@ -201,7 +201,7 @@ L<Tie::RefHash> etc.
 
 =head1 SYNOPSIS
 
-	# this module will be used automatically by L<Hash::Util::FieldHash::Compat> if necessary
+    # this module will be used automatically by L<Hash::Util::FieldHash::Compat> if necessary
 
 =head1 DESCRIPTION
 
