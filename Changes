@@ -7,11 +7,11 @@ Revision history for {{$dist->name}}
         - RT#83667: localize $SIG{__DIE__} before an eval
 
 0.03      2008-05-15
-	- Work around the strangeness of if.pm trying to use ":all.pm". WTF?
+        - Work around the strangeness of if.pm trying to use ":all.pm". WTF?
 
 0.02      2008-04-29
-	- Tie::RefHash related dependencies changed
-	- ::Compat imports all of Hash::Util::FielDhash on 5.10 so that fully qualified calls work
+        - Tie::RefHash related dependencies changed
+        - ::Compat imports all of Hash::Util::FielDhash on 5.10 so that fully qualified calls work
 
 0.01      2008-01-21
-	- Initial release
+        - Initial release

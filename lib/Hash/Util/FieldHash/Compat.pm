@@ -6,26 +6,26 @@ use warnings;
 use constant REAL_FIELDHASH => do { local $@; local $SIG{__DIE__}; eval { require Hash::Util::FieldHash } };
 
 BEGIN {
-	if ( REAL_FIELDHASH ) {
-		require Hash::Util::FieldHash;
-		Hash::Util::FieldHash->import(":all");
-	} else {
-		require Hash::Util::FieldHash::Compat::Heavy;
-	}
+    if ( REAL_FIELDHASH ) {
+        require Hash::Util::FieldHash;
+        Hash::Util::FieldHash->import(":all");
+    } else {
+        require Hash::Util::FieldHash::Compat::Heavy;
+    }
 }
 
 sub import {
-	if ( REAL_FIELDHASH ) {
-		my $class = "Hash::Util::FieldHash";
+    if ( REAL_FIELDHASH ) {
+        my $class = "Hash::Util::FieldHash";
 
-		shift @_;
-		unshift @_, $class;
+        shift @_;
+        unshift @_, $class;
 
-		goto $class->can("import");
-	} else {
-		my $class = shift;
-		$class->export_to_level(1, $class, @_);
-	}
+        goto $class->can("import");
+    } else {
+        my $class = shift;
+        $class->export_to_level(1, $class, @_);
+    }
 }
 
 __PACKAGE__
@@ -41,10 +41,10 @@ on availability.
 
 =head1 SYNOPSIS
 
-	use Hash::Util::FieldHash::Compat;
+    use Hash::Util::FieldHash::Compat;
 
-	# pretend you are using L<Hash::Util::FieldHash>
-	# under older perls it'll be Tie::RefHash::Weak instead (slower, but same behavior)
+    # pretend you are using L<Hash::Util::FieldHash>
+    # under older perls it'll be Tie::RefHash::Weak instead (slower, but same behavior)
 
 =head1 DESCRIPTION
 
@@ -74,8 +74,8 @@ Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
 
 =head1 COPYRIGHT
 
-	Copyright (c) 2008 Yuval Kogman. All rights reserved
-	This program is free software; you can redistribute
-	it and/or modify it under the same terms as Perl itself.
+    Copyright (c) 2008 Yuval Kogman. All rights reserved
+    This program is free software; you can redistribute
+    it and/or modify it under the same terms as Perl itself.
 
 =cut
