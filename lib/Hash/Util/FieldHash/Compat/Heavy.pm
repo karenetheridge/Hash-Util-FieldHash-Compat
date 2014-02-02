@@ -73,6 +73,7 @@ sub register {
 
 {
 	package Hash::Util::FieldHash::Compat::Tie::IdHash;
+
 	use Tie::Hash ();
 	use vars qw(@ISA);
 	@ISA = qw(Tie::StdHash);
@@ -101,6 +102,7 @@ sub register {
 	}
 
 	package Hash::Util::FieldHash::Compat::Tie::FieldHash;
+
 	use vars qw(@ISA);
 	@ISA = qw(Tie::RefHash::Weak);
 
@@ -158,6 +160,7 @@ sub register {
 	}
 
 	package Hash::Util::FieldHash::Compat::Destroyer;
+
 	use Scalar::Util qw(weaken);
 
 	sub new {
