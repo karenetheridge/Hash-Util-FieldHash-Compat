@@ -48,7 +48,7 @@ on availability.
 
 =head1 DESCRIPTION
 
-Under older perls this module provides a drop in compatible api to
+Under older perls this module provides a drop in compatible API to
 L<Hash::Util::FieldHash> using L<perltie>. When L<Hash::Util::FieldHash> is
 available it will use that instead.
 
@@ -63,6 +63,8 @@ See L<Hash::Util::FieldHash> for all the details of the API.
 L<Hash::Util::FieldHash>, L<Tie::RefHash>, L<Tie::RefHash::Weak>.
 
 =head1 VERSION CONTROL
+
+=for stopwords Darcs
 
 This module is maintained using Darcs. You can get the latest version from
 L<http://nothingmuch.woobling.org/code>, and use C<darcs send> to commit
