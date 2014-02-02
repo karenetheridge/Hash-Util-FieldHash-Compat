@@ -1,3 +1,6 @@
+0.04
+        - RT#83667: localize $SIG{__DIE__} before an eval
+
 0.03
 	- Work around the strangeness of if.pm trying to use ":all.pm". WTF?
 
