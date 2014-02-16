@@ -11,6 +11,7 @@ around _build_WriteMakefile_dump => sub {
 if (not eval { require Hash::Util::FieldHash; 1 }) {
     $WriteMakefileArgs{PREREQ_PM}{'Tie::RefHash::Weak'} = '0.08';
     $WriteMakefileArgs{PREREQ_PM}{'Tie::RefHash'} = '1.38';
+    $WriteMakefileArgs{PREREQ_PM}{'Scalar::Util'} = '0';
 }
 
 MORE_PREREQS
