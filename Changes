@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.05      2014-02-16 09:14:30Z
         - convert to Dist::Zilla, with more metadata
 
 0.04      2014-02-01
