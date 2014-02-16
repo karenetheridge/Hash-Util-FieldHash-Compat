@@ -1,4 +1,4 @@
-package Hash::Util::FieldHash::Compat;
+package Hash::Util::FieldHash::Compat::Heavy;
 
 use strict;
 use warnings;
@@ -70,7 +70,8 @@ sub register {
 }
 
 {
-    package Hash::Util::FieldHash::Compat::Tie::IdHash;
+    package # hide from PAUSE
+        Hash::Util::FieldHash::Compat::Tie::IdHash;
 
     use Tie::Hash ();
     use vars qw(@ISA);
@@ -99,7 +100,8 @@ sub register {
         }
     }
 
-    package Hash::Util::FieldHash::Compat::Tie::FieldHash;
+    package # hide from PAUSE
+        Hash::Util::FieldHash::Compat::Tie::FieldHash;
 
     use vars qw(@ISA);
     @ISA = qw(Tie::RefHash::Weak);
@@ -157,7 +159,8 @@ sub register {
         }
     }
 
-    package Hash::Util::FieldHash::Compat::Destroyer;
+    package # hide from PAUSE
+        Hash::Util::FieldHash::Compat::Destroyer;
 
     use Scalar::Util qw(weaken);
 
