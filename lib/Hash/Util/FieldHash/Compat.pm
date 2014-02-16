@@ -1,4 +1,5 @@
 package Hash::Util::FieldHash::Compat;
+# ABSTRACT: Use Hash::Util::FieldHash or ties, depending on availability
 
 use strict;
 use warnings;
@@ -34,11 +35,6 @@ __END__
 
 =pod
 
-=head1 NAME
-
-Hash::Util::FieldHash::Compat - Use L<Hash::Util::FieldHash> or ties, depending
-on availability.
-
 =head1 SYNOPSIS
 
     use Hash::Util::FieldHash::Compat;
@@ -61,23 +57,5 @@ See L<Hash::Util::FieldHash> for all the details of the API.
 =head1 SEE ALSO
 
 L<Hash::Util::FieldHash>, L<Tie::RefHash>, L<Tie::RefHash::Weak>.
-
-=head1 VERSION CONTROL
-
-=for stopwords Darcs
-
-This module is maintained using Darcs. You can get the latest version from
-L<http://nothingmuch.woobling.org/code>, and use C<darcs send> to commit
-changes.
-
-=head1 AUTHOR
-
-Yuval Kogman E<lt>nothingmuch@woobling.orgE<gt>
-
-=head1 COPYRIGHT
-
-    Copyright (c) 2008 Yuval Kogman. All rights reserved
-    This program is free software; you can redistribute
-    it and/or modify it under the same terms as Perl itself.
 
 =cut

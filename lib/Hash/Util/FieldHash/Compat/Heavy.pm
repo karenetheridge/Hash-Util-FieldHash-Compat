@@ -1,4 +1,5 @@
 package Hash::Util::FieldHash::Compat::Heavy;
+# ABSTRACT: Emulate Hash::Util::FieldHash using Tie::RefHash etc
 
 use strict;
 use warnings;
@@ -197,19 +198,12 @@ __END__
 
 =pod
 
-=head1 NAME
-
-Hash::Util::FieldHash::Compat::Heavy - Emulate Hash::Util::FieldHash using
-L<Tie::RefHash> etc.
-
 =head1 SYNOPSIS
 
     # this module will be used automatically by L<Hash::Util::FieldHash::Compat> if necessary
 
 =head1 DESCRIPTION
 
-See L<Hash::Util::FieldHash::Compat> for the documentation
+See L<Hash::Util::FieldHash::Compat> for the documentation.
 
 =cut
-
-
