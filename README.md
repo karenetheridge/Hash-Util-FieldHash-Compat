@@ -1,7 +1,10 @@
 # NAME
 
-Hash::Util::FieldHash::Compat - Use [Hash::Util::FieldHash](https://metacpan.org/pod/Hash::Util::FieldHash) or ties, depending
-on availability.
+Hash::Util::FieldHash::Compat - Use Hash::Util::FieldHash or ties, depending on availability
+
+# VERSION
+
+version 0.06
 
 # SYNOPSIS
 
@@ -26,18 +29,13 @@ See [Hash::Util::FieldHash](https://metacpan.org/pod/Hash::Util::FieldHash) for 
 
 [Hash::Util::FieldHash](https://metacpan.org/pod/Hash::Util::FieldHash), [Tie::RefHash](https://metacpan.org/pod/Tie::RefHash), [Tie::RefHash::Weak](https://metacpan.org/pod/Tie::RefHash::Weak).
 
-# VERSION CONTROL
-
-This module is maintained using Darcs. You can get the latest version from
-[http://nothingmuch.woobling.org/code](http://nothingmuch.woobling.org/code), and use `darcs send` to commit
-changes.
-
 # AUTHOR
 
-Yuval Kogman <nothingmuch@woobling.org>
+יובל קוג'מן (Yuval Kogman) <nothingmuch@woobling.org>
 
-# COPYRIGHT
+# COPYRIGHT AND LICENSE
 
-    Copyright (c) 2008 Yuval Kogman. All rights reserved
-    This program is free software; you can redistribute
-    it and/or modify it under the same terms as Perl itself.
+This software is copyright (c) 2008 by יובל קוג'מן (Yuval Kogman).
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.

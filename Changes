@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+0.06      2014-03-20 05:56:43Z
         - fix misleading 'provides' metadata (added in 0.05) that may confuse
           some tools
 
