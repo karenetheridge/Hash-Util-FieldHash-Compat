@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - fix misleading 'provides' metadata (added in 0.05) that may confuse
+          some tools
 
 0.05      2014-02-16 09:14:30Z
         - convert to Dist::Zilla, with more metadata

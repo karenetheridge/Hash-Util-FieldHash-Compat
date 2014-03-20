@@ -1,8 +1,9 @@
+use strict;
+use warnings;
 package Hash::Util::FieldHash::Compat::Heavy;
 # ABSTRACT: Emulate Hash::Util::FieldHash using Tie::RefHash etc
 
-use strict;
-use warnings;
+package Hash::Util::FieldHash::Compat;
 
 use Tie::RefHash::Weak;
 
