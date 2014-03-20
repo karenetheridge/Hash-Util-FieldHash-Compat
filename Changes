@@ -2,6 +2,8 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
         - better fix for misleading 'provides' metadata
+        - now skipping back-compat tests on newer perls - this test will now
+          run for authors only
 
 0.06      2014-03-20 05:56:43Z
         - fix misleading 'provides' metadata (added in 0.05) that may confuse
