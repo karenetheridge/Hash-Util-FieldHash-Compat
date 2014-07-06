@@ -6,7 +6,7 @@ package Hash::Util::FieldHash::Compat::Heavy;
 package # hide from 'provides' scanner
     Hash::Util::FieldHash::Compat;
 
-use Tie::RefHash::Weak;
+use Tie::RefHash::Weak 0.08;
 
 use vars qw(@ISA %EXPORT_TAGS @EXPORT_OK);
 
