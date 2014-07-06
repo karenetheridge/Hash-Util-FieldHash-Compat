@@ -1,5 +1,6 @@
 package Hash::Util::FieldHash::Compat;
 # ABSTRACT: Use Hash::Util::FieldHash or ties, depending on availability
+# KEYWORDS: fields hashes fieldhash backwards compatibility backcompat tie
 
 use strict;
 use warnings;
