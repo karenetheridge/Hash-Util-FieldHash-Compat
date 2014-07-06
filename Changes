@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - add missing prereq declarations needed for perl 5.6 (RT#97000)
 
 0.07      2014-03-20 17:05:45Z
         - better fix for misleading 'provides' metadata
