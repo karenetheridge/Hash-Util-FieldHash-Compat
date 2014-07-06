@@ -8,11 +8,9 @@ package # hide from 'provides' scanner
 
 use Tie::RefHash::Weak 0.08;
 
-use vars qw(@ISA %EXPORT_TAGS @EXPORT_OK);
+use parent 'Exporter';
 
-@ISA = qw(Exporter);
-
-%EXPORT_TAGS = (
+our %EXPORT_TAGS = (
     'all' => [ qw(
         fieldhash
         fieldhashes
@@ -24,7 +22,7 @@ use vars qw(@ISA %EXPORT_TAGS @EXPORT_OK);
     )],
 );
 
-@EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
+our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 sub fieldhash (\%) {
     my $hash = shift;
@@ -77,8 +75,7 @@ sub register {
         Hash::Util::FieldHash::Compat::Tie::IdHash;
 
     use Tie::Hash ();
-    use vars qw(@ISA);
-    @ISA = qw(Tie::StdHash);
+    our @ISA = qw(Tie::StdHash);
 
     # this class always stringifies using id().
 
@@ -106,8 +103,7 @@ sub register {
     package # hide from PAUSE
         Hash::Util::FieldHash::Compat::Tie::FieldHash;
 
-    use vars qw(@ISA);
-    @ISA = qw(Tie::RefHash::Weak);
+    our @ISA = qw(Tie::RefHash::Weak);
 
     # this subclass retains weakrefs to the objects in the keys, but pretends
     # the keys are actually strings
