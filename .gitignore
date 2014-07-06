@@ -1,4 +1,6 @@
+/.ackrc
 /.build/
-!.gitignore
+!/.gitignore
+/.latest
 /Hash-Util-FieldHash-Compat-*/
 /Hash-Util-FieldHash-Compat-*.tar.gz
