@@ -3,11 +3,6 @@ use warnings;
 
 use Test::More;
 
-BEGIN {
-    plan skip_all => 'backwards compatibility tests are for authors only'
-        unless $ENV{AUTHOR_TESTING} or $ENV{RELEASE_TESTING};
-}
-
 use Devel::Hide 'Hash::Util::FieldHash';
 use ok 'Hash::Util::FieldHash::Compat' => qw(fieldhash idhash register id id_2obj idhashes fieldhashes);
 
