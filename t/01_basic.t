@@ -2,8 +2,7 @@ use strict;
 use warnings;
 
 use Test::More;
-
-use ok 'Hash::Util::FieldHash::Compat' => qw(fieldhash idhash register id id_2obj idhashes fieldhashes);
+use Hash::Util::FieldHash::Compat qw(fieldhash idhash register id id_2obj idhashes fieldhashes);
 
 {
     my %hash = (
