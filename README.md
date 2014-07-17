@@ -4,7 +4,7 @@ Hash::Util::FieldHash::Compat - Use Hash::Util::FieldHash or ties, depending on 
 
 # VERSION
 
-version 0.07
+version 0.08
 
 # SYNOPSIS
 
@@ -39,3 +39,8 @@ This software is copyright (c) 2008 by יובל קוג'מן (Yuval Kogman).
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
+
+# CONTRIBUTORS
+
+- Karen Etheridge <ether@cpan.org>
+- Yuval Kogman <nothingmuch@woobling.org>
