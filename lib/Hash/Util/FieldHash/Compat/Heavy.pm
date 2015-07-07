@@ -3,6 +3,8 @@ use warnings;
 package Hash::Util::FieldHash::Compat::Heavy;
 # ABSTRACT: Emulate Hash::Util::FieldHash using Tie::RefHash etc
 
+our $VERSION = '0.09';
+
 package # hide from 'provides' scanner
     Hash::Util::FieldHash::Compat;
 

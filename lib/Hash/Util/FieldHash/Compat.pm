@@ -5,6 +5,8 @@ package Hash::Util::FieldHash::Compat;
 use strict;
 use warnings;
 
+our $VERSION = '0.09';
+
 use constant REAL_FIELDHASH => do { local $@; local $SIG{__DIE__}; eval { require Hash::Util::FieldHash } };
 
 BEGIN {
