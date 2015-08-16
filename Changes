@@ -1,6 +1,7 @@
 Revision history for Hash-Util-FieldHash-Compat
 
 {{$NEXT}}
+        - update some distribution tooling
 
 0.08      2014-07-17 15:06:28Z
         - add missing prereq declarations needed for perl 5.6 (RT#97000)
