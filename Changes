@@ -1,6 +1,6 @@
 Revision history for Hash-Util-FieldHash-Compat
 
-{{$NEXT}}
+0.10      2015-09-27 04:28:27Z
         - fix invalid prereq specification for Heavy implementation (changed
           in 0.09)
 

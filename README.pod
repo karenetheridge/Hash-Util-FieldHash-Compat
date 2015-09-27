@@ -8,7 +8,7 @@ Hash::Util::FieldHash::Compat - Use Hash::Util::FieldHash or ties, depending on 
 
 =head1 VERSION
 
-version 0.09
+version 0.10
 
 =head1 SYNOPSIS
 
@@ -33,6 +33,11 @@ See L<Hash::Util::FieldHash> for all the details of the API.
 
 L<Hash::Util::FieldHash>, L<Tie::RefHash>, L<Tie::RefHash::Weak>.
 
+=head1 SUPPORT
+
+Bugs may be submitted through L<the RT bug tracker|https://rt.cpan.org/Public/Dist/Display.html?Name=Hash-Util-FieldHash-Compat>
+(or L<bug-Hash-Util-FieldHash-Compat@rt.cpan.org|mailto:bug-Hash-Util-FieldHash-Compat@rt.cpan.org>).
+
 =head1 AUTHOR
 
 יובל קוג'מן (Yuval Kogman) <nothingmuch@woobling.org>
@@ -43,7 +48,7 @@ L<Hash::Util::FieldHash>, L<Tie::RefHash>, L<Tie::RefHash::Weak>.
 
 Karen Etheridge <ether@cpan.org>
 
-=head1 COPYRIGHT AND LICENSE
+=head1 COPYRIGHT AND LICENCE
 
 This software is copyright (c) 2008 by יובל קוג'מן (Yuval Kogman).
 
