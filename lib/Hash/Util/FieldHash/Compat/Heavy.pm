@@ -188,6 +188,7 @@ sub register {
     sub DESTROY {
         my $self = shift;
         my $object = $self->{object};
+        return if not defined $object;
         delete $_->{Hash::Util::FieldHash::Compat::id($object)} for keys %{ $self->{hashes} };
     }
 }
