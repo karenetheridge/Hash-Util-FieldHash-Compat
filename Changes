@@ -1,6 +1,6 @@
 Revision history for Hash-Util-FieldHash-Compat
 
-{{$NEXT}}
+0.11      2016-06-13 21:57:55Z
         - be gentle to older toolchains by avoiding the use of
           Module::Metadata in configure-requires (RT#115310)
 
