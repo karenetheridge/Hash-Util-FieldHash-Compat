@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More 0.88;
 use Hash::Util::FieldHash::Compat qw(fieldhash idhash register id id_2obj idhashes fieldhashes);
 
 {
