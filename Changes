@@ -1,6 +1,8 @@
 Revision history for Hash-Util-FieldHash-Compat
 
 {{$NEXT}}
+        - be gentle to older toolchains by avoiding the use of
+          Module::Metadata in configure-requires (RT#115310)
 
 0.10      2015-09-27 04:28:27Z
         - fix invalid prereq specification for Heavy implementation (changed
